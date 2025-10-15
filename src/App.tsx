@@ -5,13 +5,14 @@ import { Routes, Route, Link, Navigate, useLocation } from 'react-router-dom';
 import { HomePage } from './components/HomePage';
 import { TabsPage } from './components/TabsPage';
 import { NotFoundPage } from './components/NotFoundPage';
-import classNames from 'classnames';
+import cn from 'classnames';
 
 export const App = () => {
   const location = useLocation();
 
   const isHome = location.pathname === '/';
-  const isTabs = location.pathname.startsWith('/tabs');
+  const isTabs =
+    location.pathname === '/tabs' || location.pathname.startsWith('/tabs/');
 
   return (
     <>
@@ -21,15 +22,12 @@ export const App = () => {
       >
         <div className="container">
           <div className="navbar-brand">
-            <Link
-              to="/"
-              className={classNames('navbar-item', { 'is-active': isHome })}
-            >
+            <Link to="/" className={cn('navbar-item', { 'is-active': isHome })}>
               Home
             </Link>
             <Link
               to="/tabs"
-              className={classNames('navbar-item', { 'is-active': isTabs })}
+              className={cn('navbar-item', { 'is-active': isTabs })}
             >
               Tabs
             </Link>
