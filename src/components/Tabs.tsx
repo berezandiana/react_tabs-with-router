@@ -10,7 +10,7 @@ const tabs = [
 export const Tabs = () => {
   const { tabId } = useParams();
 
-  const activeTab = tabs.find(tab => tab.id === tabId) || tabs[0];
+  const activeTab = tabs.find(tab => tab.id === tabId);
   const content = activeTab ? activeTab.content : 'Please select a tab';
 
   return (
